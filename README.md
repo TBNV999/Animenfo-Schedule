@@ -7,11 +7,11 @@ Display the currently playing song and coming up songs of animeNfo radio(https:/
 - beautifulsoup4
 
 ### What imformation can I get?
-By using this, you are able to get these imfromation:  
+By using this, you are able to get these information:  
  - Currently on schedule  
- - Next block of schedule (You can also see how long it take to get the Next block)  
+ - The next block of schedule (You can also see how long it takes to get the Next block)  
  - The playing song
  - Coming up songs (Information of  the latest 5 songs they will be played)  
  
- If you want to know what kind of information in detail, You should check output-example.txt in this repositry.
+ If you want to know what kind of information in detail, You should check output-example.txt in this repository.
  
