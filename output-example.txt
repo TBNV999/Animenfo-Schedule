@@ -1,0 +1,27 @@
+Example of output
+
+
+now - 17:53:11 
+
+Currently on schedule:
+Normal Playlist & Requests
+
+
+3:6:50 left until:
+Anime
+
+Queue ends up in:
+Normal Playlist & Requests 
+Now playing:
+Artist: SEKAI NO OWARI
+Album: Star Light Parade (2011)
+Album Type: Studio Single
+Series: N/A
+
+Coming up:
+Artist - Title - Series
+Ranko - IGNITED  - Kidou Senshi Gundam SEED DESTINY
+GOING UNDER GROUND - Onaji Tsuki wo Miteta  - N/A
+Aikawa Nanase - LIKE A HARD RAIN  - N/A
+MELL - Egen  - Sonic Dive
+Kugimiya Rie - Two Moons  - Zero no Tsukaima ~Muma ga Tsumugu Yokaze no Gensoukyoku~
