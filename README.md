@@ -1,4 +1,4 @@
-# Animeno-Schedule
+# Animenfo-Schedule
 Display the currently playing song and coming up songs of animeNfo radio(https://animenfo.com/radio) in your CLI.
 
 ## Required external library
