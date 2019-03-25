@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #The schedule of animeNfo radio
 
 import sys, os, datetime
@@ -8,11 +10,11 @@ from bs4 import BeautifulSoup
 
 def cls():
 
-    #for windows
+    #For windows
     if os.name == "nt":
         command = "cls"
 
-    #other os 
+    #Other os 
     else:
         command = "clear"
 
@@ -109,12 +111,12 @@ def display_coming_up(source):
     print("Coming up:")
     print("Artist - Title - Series")
 
+    #Replace with N/A if series information is not included
+    series_list = [i if i != " " else "N/A" for i in series_list]
+
     for i in range(5):
 
         try:
-
-            if series_list[i] == " ":
-                series_list[i] = "N/A"
 
             print("{} - {} - {}".format(artist_list[i],title_list[i],series_list[i]))    
 
@@ -138,7 +140,7 @@ def main():
 
     schedule = schedule.splitlines()
 
-    #remove needless elements
+    #Remove needless elements
     schedule.pop(2)
     schedule.pop(4)
     schedule.pop(1)
@@ -149,37 +151,27 @@ def main():
     for element in schedule:
         print(element)
 
+    print("")
     print("Now playing:")
 
     song_data = source.find(class_="span6").get_text().splitlines()
     artist = color(song_data[1].split(":"))
 
-    #exist circle handling 
-    #not Title
-    if song_data[5][0] != 'T': 
+    #Weather circle information exist
+    if song_data[2][0] == 'C': 
         title = song_data[3].split(':')
-
-    else:
-        title  = song_data[2].split(':')
-
-    #exist circle handling
-    #not Series
-    if song_data[5][0] != "S":
         series = song_data[6].split(':')
 
     else:
+        title  = song_data[2].split(':')
         series = song_data[5].split(':')
-    
+
     title = color(title)
     series = color(series)
 
     song_data[1] = ':'.join(artist)
     song_data[2] = ':'.join(title)
     song_data[5] = ':'.join(series)
-
-    song_data.pop(0)
-    song_data.pop(2)
-    song_data.pop(4)
 
     for data in song_data:
         print(data)
