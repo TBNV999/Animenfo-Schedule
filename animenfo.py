@@ -53,26 +53,6 @@ def form_series_data(series):
     return series
 
 
-def display_time():
-
-    now = datetime.datetime.now()
-
-    hour = now.hour
-    minute = now.minute
-    second = now.second
-
-    if hour < 10:
-        hour = "0" + str(hour)
-
-    if minute < 10:
-        minute = "0" + str(minute)
-
-    if second < 10:
-        second = "0" + str(second)
-
-    print("now - {}:{}:{} ".format(hour, minute, second), end="\n\n")
-
-
 def display_coming_up(source):
 
     schedule= source.find_all(class_="span5")
@@ -114,20 +94,14 @@ def display_coming_up(source):
     #Replace with N/A if series information is not included
     series_list = [i if i != " " else "N/A" for i in series_list]
 
-    for i in range(5):
+    for artist, title, series in zip(artist_list,title_list,series_list):
 
-        try:
-
-            print("{} - {} - {}".format(artist_list[i],title_list[i],series_list[i]))    
-
-        except IndexError:
-            sys.exit()
+        print(f"{artist} - {title} - {series}")
 
 
 def main():
 
     cls()
-    display_time()
     
     res = requests.get('https://www.animenfo.com/radio/nowplaying.php')
 
@@ -156,6 +130,9 @@ def main():
 
     song_data = source.find(class_="span6").get_text().splitlines()
     artist = color(song_data[1].split(":"))
+
+    print(song_data)
+    sys.exit()
 
     #Weather circle information exist
     if song_data[2][0] == 'C': 
