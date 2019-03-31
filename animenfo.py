@@ -14,7 +14,7 @@ def cls():
     if os.name == "nt":
         command = "cls"
 
-    #Other os 
+    #For Other os 
     else:
         command = "clear"
 
@@ -23,8 +23,8 @@ def cls():
 
 def color(l):
 
-    red = '\033[31m'
-    default = '\033[0m'
+    red = "\033[31m"
+    default = "\033[0m"
     l[0] = red + l[0] + default
 
     return l
@@ -33,8 +33,8 @@ def color(l):
 def form_data(data):
     
     data = data.replace('\"',"")
-    data = data.replace('href',"")
-    data = data.replace('amp;',"")
+    data = data.replace("href","")
+    data = data.replace("amp;","")
 
     return data
 
@@ -103,14 +103,14 @@ def main():
 
     cls()
     
-    res = requests.get('https://www.animenfo.com/radio/nowplaying.php')
+    res = requests.get("https://www.animenfo.com/radio/nowplaying.php")
 
     if res.status_code != 200:
         print("Connection Error!")
         sys.exit()
 
     source = BeautifulSoup(res.text, "lxml")
-    schedule = source.find(id='schedule_container').get_text()
+    schedule = source.find(id="schedule_container").get_text()
 
     schedule = schedule.splitlines()
 
@@ -129,26 +129,26 @@ def main():
     print("Now playing:")
 
     song_data = source.find(class_="span6").get_text().splitlines()
-    artist = color(song_data[1].split(":"))
 
-    print(song_data)
-    sys.exit()
+    artist_place = 1
+    artist = color(song_data[artist_place].split(":"))
 
-    #Weather circle information exist
-    if song_data[2][0] == 'C': 
-        title = song_data[3].split(':')
-        series = song_data[6].split(':')
+    #If "Circle(s)/Groups(s)" information contain in currently song, shift data place
+    if song_data[2][0] == "C": 
+        title_place = 3
+        series_place = 6
 
     else:
-        title  = song_data[2].split(':')
-        series = song_data[5].split(':')
+        title_place = 2
+        series_place = 5
 
-    title = color(title)
-    series = color(series)
+    title = color(song_data[title_place].split(":"))
+    series = color(song_data[series_place].split(":"))
 
-    song_data[1] = ':'.join(artist)
-    song_data[2] = ':'.join(title)
-    song_data[5] = ':'.join(series)
+
+    song_data[1] = ":".join(artist)
+    song_data[2] = ":".join(title)
+    song_data[5] = ":".join(series)
 
     for data in song_data:
         print(data)
