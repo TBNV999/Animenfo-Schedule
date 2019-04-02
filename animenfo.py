@@ -23,6 +23,10 @@ def cls():
 
 def color(l):
 
+    if os.name == "nt":
+        #Do nothing because ANSI escape sequense is not available in windows
+        return l
+
     red = "\033[31m"
     default = "\033[0m"
     l[0] = red + l[0] + default
