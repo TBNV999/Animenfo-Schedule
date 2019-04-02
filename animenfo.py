@@ -151,8 +151,8 @@ def main():
 
 
     song_data[1] = ":".join(artist)
-    song_data[2] = ":".join(title)
-    song_data[5] = ":".join(series)
+    song_data[title_place] = ":".join(title)
+    song_data[series_place] = ":".join(series)
 
     for data in song_data:
         print(data)
