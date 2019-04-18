@@ -137,7 +137,7 @@ def main():
     artist_place = 1
     artist = color(song_data[artist_place].split(":"))
 
-    #If "Circle(s)/Groups(s)" information contain in currently song, shift data place
+    #If "Circle(s)/Group(s)" information contain in currently song, shift the  data place
     if song_data[2][0] == "C": 
         title_place = 3
         series_place = 6
