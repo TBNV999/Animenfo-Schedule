@@ -2,8 +2,10 @@
 
 #The schedule of animeNfo radio
 
+#Standard modules
 import sys, os, datetime
 
+#External modules
 import requests
 from bs4 import BeautifulSoup
 
@@ -34,25 +36,25 @@ def color(l):
     return l
 
 
+#Delete some tags and special charactors in title and artist information
 def form_data(data):
     
-    data = data.replace('\"',"")
-    data = data.replace("href","")
-    data = data.replace("amp;","")
+    to_delete = ['\"', "href", "amp",] 
+
+    for string in to_delete:
+        data = data.replace(string, "")
 
     return data
 
 
+#Delete some tags and special charactors in series information
 def form_series_data(series):
 
-    series=series.replace('<div class="span2 seriestag"',"")
-    series=series.replace("</div>","")
-    series=series.replace("\n","")
-    series=series.replace("\t","")
-    series=series.replace(">","")
-    series=series.replace("href","")
-    series=series.replace("\xa0"," ")
-    series=series.replace("amp;","")
+    to_delete = ['<div class="span2 seriestag"' ,"</div>" ,"\n", \
+                "\t" ,">" ,"href" ,"\xa0", "amp"]
+    
+    for string in to_delete:
+        series = series.replace(string, "")
 
     return series
 
@@ -96,7 +98,7 @@ def display_coming_up(source):
     print("Artist - Title - Series")
 
     #Replace with N/A if series information is not included
-    series_list = [i if i != " " else "N/A" for i in series_list]
+    series_list = [i if i != ""  else "N/A" for i in series_list]
 
     for artist, title, series in zip(artist_list,title_list,series_list):
 
