@@ -23,17 +23,17 @@ def cls():
     os.system(command)
     
 
-def color(l):
+def color(song_data):
 
     if os.name == "nt":
         #Do nothing because ANSI escape sequense is not available in windows
-        return l
+        return song_data
 
     red = "\033[31m"
     default = "\033[0m"
-    l[0] = red + l[0] + default
+    song_data[0] = red + song_data [0] + default
 
-    return l
+    return song_data
 
 
 #Delete some tags and special charactors in title and artist information
@@ -50,8 +50,8 @@ def form_data(data):
 #Delete some tags and special charactors in series information
 def form_series_data(series):
 
-    to_delete = ['<div class="span2 seriestag"' ,"</div>" ,"\n", \
-                "\t" ,">" ,"href" ,"\xa0", "amp"]
+    to_delete = ['<div class="span2 seriestag"', "</div>", "\n", \
+                "\t", ">", "href", "\xa0", "amp"]
     
     for string in to_delete:
         series = series.replace(string, "")
@@ -100,7 +100,7 @@ def display_coming_up(source):
     #Replace with N/A if series information is not included
     series_list = [i if i != ""  else "N/A" for i in series_list]
 
-    for artist, title, series in zip(artist_list,title_list,series_list):
+    for artist, title, series in zip(artist_list, title_list, series_list):
 
         print(f"{artist} - {title} - {series}")
 
