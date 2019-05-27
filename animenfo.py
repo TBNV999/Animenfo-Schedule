@@ -10,6 +10,14 @@ import requests
 from bs4 import BeautifulSoup
 
 
+def show_help():
+
+    print("If you input no option, you can get information of the current song and the block and the five coming up songs.\n ")
+    print("--current  You can check about only current information")
+    print("--help     Show the available options")
+
+
+#Clear the terminal screen
 def cls():
 
     #For windows
@@ -30,7 +38,7 @@ def color(song_data):
         return song_data
 
     red = "\033[31m"
-    default = "\033[0m"
+    default = "\033[0m" #default text color
     song_data[0] = red + song_data [0] + default
 
     return song_data
@@ -105,7 +113,7 @@ def display_coming_up(source):
         print(f"{artist} - {title} - {series}")
 
 
-def main():
+def main(no_coming_up):
 
     cls()
     
@@ -139,7 +147,7 @@ def main():
     artist_place = 1
     artist = color(song_data[artist_place].split(":"))
 
-    #If "Circle(s)/Group(s)" information contain in currently song, shift the  data place
+    #If "Circle(s)/Group(s)" information contain in currently song, shift the data place
     if song_data[2][0] == "C": 
         title_place = 3
         series_place = 6
@@ -159,8 +167,34 @@ def main():
     for data in song_data:
         print(data)
 
-    display_coming_up(source)
+    if no_coming_up:
+        sys.exit()
+
+    else:
+        display_coming_up(source)
 
 
 if __name__ == "__main__":
-    main()
+
+    argv = sys.argv
+    length = len(argv)
+
+    if length == 1:
+        #No option. Only current information will be displayed
+        no_coming_up = False
+
+    elif argv[1] == "--current":
+        #Coming up songs information won't be displayed
+        no_coming_up = True 
+
+    elif argv[1] == "--help":
+        show_help()
+        sys.exit()
+
+    else:
+        #Error
+        print("Option error")
+        print('You can check the options by "--help" option')
+        sys.exit()
+
+    main(no_coming_up)
