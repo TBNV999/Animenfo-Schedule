@@ -11,7 +11,7 @@ By using this, you are able to get these information:
  - Currently on schedule  
  - The next block of schedule (You can also see how long it takes to get the Next block)  
  - The playing song
- - Coming up songs (Information of  the latest 5 songs they will be played)  
+ - Coming up songs (Information of  the 5 songs to be played from now)  
  
  If you want to know what kind of information can you fetch in detail, You should check output-example.txt in this repository.
  
