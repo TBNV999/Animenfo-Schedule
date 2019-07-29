@@ -103,6 +103,7 @@ def display_coming_up(source):
     
     print("")
     print("Coming up:")
+    print("")
     print("Artist - Title - Series")
 
     #Replace with N/A if series information is not included
