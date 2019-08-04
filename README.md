@@ -13,4 +13,7 @@ By using this, you can these information:
  - The playing song currently
  - Coming up songs (Information of  the 5 songs to be played from now)  
  
- Please check "output_example" in this repository if you want to know what the output like.
+ #### Options
+ Few options are available in this program. You can run animenfo.py with <b>--help</b> option to check it out.
+ 
+ Please take a look "output_example" in this repository if you want to know what the output like.
