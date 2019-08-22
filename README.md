@@ -16,4 +16,4 @@ By using this, you can these information:
  #### Options
  Few options are available in this program. You can run animenfo.py with <b>--help</b> option to check it out.
  
- Please take a look "output_example" in this repository if you want to know what the output like.
+ Please take a look at "output_example" in this repository if you want to know what the output like.
