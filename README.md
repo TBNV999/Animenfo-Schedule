@@ -17,3 +17,7 @@ By using this, you can fetch these information:
  Few options are available in this program. You can run animenfo.py with <b>--help</b> option to check it out.
  
  Please take a look at "output_example" in this repository if you want to know what the output like.
+ 
+ ##### P.S
+ From 1/1/2020 AnimeNfo announced that this radio stream has been unable due to technical issues with radio streams.
+ but it will be fixed soon. This tool is still available but you can't listen it.
