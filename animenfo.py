@@ -31,6 +31,7 @@ def cls():
     os.system(command)
     
 
+#Color text with ANSI escape sequense 
 def color(song_data):
 
     if os.name == "nt":
@@ -118,7 +119,12 @@ def main(no_coming_up):
 
     cls()
     
-    res = requests.get("https://www.animenfo.com/radio/nowplaying.php")
+    try:
+        res = requests.get("https://www.animenfo.com/radio/nowplaying.php", timeout=6)
+
+    except Exception:
+        print("Connection Error!")
+        sys.exit()
 
     if res.status_code != 200:
         print("Connection Error!")
@@ -181,7 +187,7 @@ if __name__ == "__main__":
     length = len(argv)
 
     if length == 1:
-        #No option. Only current information will be displayed
+        #No option: Current information and coming up songs will be displayed
         no_coming_up = False
 
     elif argv[1] == "--current":
